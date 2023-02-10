@@ -4,14 +4,15 @@ import Card from '../UI/Card';
 import { CSVLink } from 'react-csv';
 const CurrencyList=(props)=>{
     let i=0;
-    const CurrencyItem = props.value;
+    let CurrencyItem = props.value;
     const{
         toCurrency,
         mapped_array,
       }=props;
+      CurrencyItem = CurrencyItem.filter(item => !isNaN(mapped_array[0][item.Currency]));
       CurrencyItem.forEach( element => {
           element.ConvertedCurrency=toCurrency
-          element.ConvertedAmount=element.Amount*(mapped_array[0][toCurrency]/mapped_array[0][element.Currency])   
+          element.ConvertedAmount=element.Amount*(mapped_array[0][toCurrency]/mapped_array[0][element.Currency])
       });
       const headers=[
           {label:"Name", key:"Name"},
@@ -44,8 +45,6 @@ const CurrencyList=(props)=>{
           {
           CurrencyItem.map(
               (Currency) => {
-                  const val=Currency.ConvertedAmount;
-                  if(!isNaN(val))
                 return(
                     <tr key={i++}>
                     <td>{Currency.Name}</td>
@@ -56,8 +55,6 @@ const CurrencyList=(props)=>{
                     <td>{Currency.ConvertedAmount}</td>
                     </tr>
                 );
-                else
-                return ('');
            }
     )
            }
