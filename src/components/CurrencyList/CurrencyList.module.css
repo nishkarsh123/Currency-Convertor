@@ -1,0 +1,23 @@
+.currency {
+    max-width: 60rem;
+    width: 90%;
+    margin: 2rem auto;
+    animation: meals-appear 1s ease-out forwards;
+  }
+.heading
+{
+    background-color: purple;
+    color: white;
+    z-index: 10;
+}
+.sticky th
+{
+    position: sticky;
+    top: 80px;
+    color: white;
+    background-color: purple;
+}
+.linkhover:hover
+{
+  color: red;
+}
