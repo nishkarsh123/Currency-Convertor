@@ -14,12 +14,12 @@ const CurrencyList=(props)=>{
           element.ConvertedAmount=element.Amount*(mapped_array[0][toCurrency]/mapped_array[0][element.Currency])   
       });
       const headers=[
-          {label:"NAME", key:"Name"},
-          {label:"CURRENCY", key:"Currency"},
-          {label:"AMOUNT", key:"Amount"},
-          {label:"TRANSACTION DATE", key:"TransactionDate"},
-          {label:"CONVERTED CURRENCY", key:"ConvertedCurrency"},
-          {label:"CONVERTED AMOUNT", key:"ConvertedAmount"}
+          {label:"Name", key:"Name"},
+          {label:"Currency", key:"Currency"},
+          {label:"Amount", key:"Amount"},
+          {label:"TransactionDate", key:"TransactionDate"},
+          {label:"ConvertedCurrency", key:"ConvertedCurrency"},
+          {label:"ConvertedAmount", key:"ConvertedAmount"}
       ];
       const csvlink = {
           filename: "Amount.csv",
@@ -32,18 +32,20 @@ const CurrencyList=(props)=>{
       <table border={1} width="100%" cellPadding={10} className={classes.sticky}>
           <thead>
             <tr className={classes.heading}>
-                  <th>NAME</th>
-                  <th>CURRENCY</th>
-                  <th>AMOUNT</th>
-                  <th>TRANSACTION DATE</th>
-                  <th>CONVERTED CURRENCY</th>
-                  <th>CONVERTED AMOUNT</th>
+                  <th>Name</th>
+                  <th>Currency</th>
+                  <th>Amount</th>
+                  <th>TransactionDate</th>
+                  <th>ConvertedCurrency</th>
+                  <th>ConvertedAmount</th>
               </tr>
           </thead>
           <tbody>
           {
           CurrencyItem.map(
               (Currency) => {
+                  const val=Currency.ConvertedAmount;
+                  if(!isNaN(val))
                 return(
                     <tr key={i++}>
                     <td>{Currency.Name}</td>
@@ -54,6 +56,8 @@ const CurrencyList=(props)=>{
                     <td>{Currency.ConvertedAmount}</td>
                     </tr>
                 );
+                else
+                return ('');
            }
     )
            }
